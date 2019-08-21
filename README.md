@@ -35,7 +35,40 @@ yarn add react-use-setup
 
 ## Usage
 
-TODO
+- Counter Examples
+
+```javascript
+import React from 'react'
+import { reactive, useSetup } from 'react-use-setup'
+
+let setupCounter = (initialValue = 0) => {
+  /**
+   * setup function is the mutable world
+   */
+  let count = reactive({ value: initialValue })
+  let incre = () => (count.value += 1)
+  let decre = () => (count.value -= 1)
+
+  // expose the reactive state and update functions
+  return {
+    count,
+    incre,
+    decre
+  }
+}
+
+let Counter = props => {
+  // react component is the immutable world
+  // every time the reactive state is mutated
+  // it will emit an immutable state for react component to comsume
+  let { count, incre, decre } = useSetup(() => setupCounter(props.count))
+  return (
+    <button onClick={incre} onDoubleClick={decre}>
+      {count.value}
+    </button>
+  )
+}
+```
 
 ## Author
 
