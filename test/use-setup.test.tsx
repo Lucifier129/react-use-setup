@@ -2,7 +2,7 @@ import 'jest'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { act } from 'react-dom/test-utils'
-import { reactive, useSetup, ref } from '../src'
+import { reactive, useSetup } from '../src'
 
 const delay = (timeout = 0) => new Promise(resolve => setTimeout(resolve, timeout))
 

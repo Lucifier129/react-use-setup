@@ -62,6 +62,7 @@ let Counter = props => {
   // every time the reactive state is mutated
   // it will emit an immutable state for react component to comsume
   let { count, incre, decre } = useSetup(() => setupCounter(props.count))
+
   return (
     <button onClick={incre} onDoubleClick={decre}>
       {count.value}

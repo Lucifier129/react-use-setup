@@ -14,8 +14,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist/lib",
+    "outDir": "dist",
     "typeRoots": [
       "node_modules/@types"
     ]

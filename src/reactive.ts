@@ -76,6 +76,11 @@ export const reactive = <T extends object>(state: T): T => {
     throw new Error(message)
   }
 
+  // return unconnected state
+  if (isReactive(state) && !state[INTERNAL].isConnected()) {
+    return state
+  }
+
   let isArrayType = isArray(state)
 
   let target = isArrayType ? [] : {}
@@ -165,9 +170,7 @@ export const reactive = <T extends object>(state: T): T => {
       }
 
       // connect current value
-      if (isReactive(value) && !value[INTERNAL].isConnected()) {
-        value[INTERNAL].connect(state$, key)
-      } else if (isObject(value) || isArray(value)) {
+      if (isObject(value) || isArray(value)) {
         value = reactive(value)
         value[INTERNAL].connect(state$, key)
       }
@@ -261,5 +264,3 @@ export const remove = <T extends any[] | object = any>(state$: T): boolean => {
   }
   return state$[INTERNAL].remove()
 }
-
-export const ref = current => reactive({ current })

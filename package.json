@@ -2,12 +2,9 @@
   "name": "react-use-setup",
   "version": "1.0.0",
   "description": "Implement the mechanism of Vue 3.0 Composition API for React based on React Hooks",
-  "main": "dist/lib/index.js",
-  "typings": "dist/types/index.d.ts",
+  "main": "dist/index.js",
   "files": [
-    "dist",
-    "react.js",
-    "react.d.ts"
+    "dist"
   ],
   "repository": {
     "type": "git",
